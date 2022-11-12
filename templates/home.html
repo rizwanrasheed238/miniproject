@@ -1,0 +1,836 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Header /- -->
+    <!-- Main-Slider -->
+    <div class="default-height ph-item">
+        <div class="slider-main owl-carousel">
+            <div class="bg-image one">
+                <div class="slide-content slide-animation">
+                    <h1>AT THE LOWEST </h1>
+                    <h2>PRICE /</h2>
+                </div>
+            </div>
+            <div class="bg-image two">
+                <div class="slide-content-2 slide-animation">
+                    <h2 class="slide-2-h2-a">POWER WINDOW</h2>
+                    <h2 class="slide-2-h2-b">UP TO 55%</h2>
+                    <h1>OFF</h1>
+                </div>
+            </div>
+            <div class="bg-image three">
+                <div class="slide-content slide-animation">
+                    <h1>SHOP
+                        <span style="color:#333">NOW</span>
+                    </h1>
+                    <h2 style="color:#333"></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Men-Clothing-Timing-Section -->
+    <section class="section-maker">
+        <div class="container">
+            <div class="sec-maker-header text-center">
+                <span class="sec-maker-span-text">****</span>
+                <h3 class="sec-maker-h3 u-s-m-b-22">NEW PRODUCTS</h3>
+                <span class="sec-maker-span-text">****</span>
+                <!-- Timing-Box -->
+                <!-- <div class="section-timing-wrapper dynamic">
+                    <span class="fictitious-seconds" style="display:none;">18000</span>
+                    <div class="section-box-wrapper box-days">
+                        <div class="section-box">
+                            <span class="section-key">120</span>
+                            <span class="section-value">Days</span>
+                        </div>
+                    </div>
+                    <div class="section-box-wrapper box-hrs">
+                        <div class="section-box">
+                            <span class="section-key">54</span>
+                            <span class="section-value">HRS</span>
+                        </div>
+                    </div>
+                    <div class="section-box-wrapper box-mins">
+                        <div class="section-box">
+                            <span class="section-key">3</span>
+                            <span class="section-value">MINS</span>
+                        </div>
+                    </div>
+                    <div class="section-box-wrapper box-secs">
+                        <div class="section-box">
+                            <span class="section-key">32</span>
+                            <span class="section-value">SEC</span>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Timing-Box /- -->
+            </div>
+            <!-- Carousel -->
+            
+            <div class="slider-fouc">
+                <div class="products-slider owl-carousel" data-item="4">
+                    
+                    {% for i in product %}
+                    <div class="item">
+                        <div class="image-container">
+                            <a class="item-img-wrapper-link" href="{% url 'singleproduct' i.id %}">
+                                <img class="img-fluid" src="{{i.product_image.url}}" style=" width: 250px;
+                                height:250px;" alt="Product">
+                            </a>
+                            <div class="item-action-behaviors">
+                                <!-- <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look</a> -->
+                                <!-- <a class="item-mail" href="javascript:void(0)">Mail</a> -->
+                                <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                <a class="item-addCart" href="{% url 'addcart' i.id  %}">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="item-content">
+                            <div class="what-product-is" style=" text-align: center;">
+                                <ul class="bread-crumb">
+                                    <!-- <li class="has-separator">
+                                        <a href="shop-v1-root-category.html">{{i.name}}</a>
+                                    </li> -->
+                                    <!-- <li class="has-separator">
+                                        <a href="shop-v2-sub-category.html">Outwear</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-v3-sub-sub-category.html">Jackets</a>
+                                    </li> -->
+                                </ul>
+                                <h6 class="item-title" style=" text-align: center;">
+                                    <a style="font-weight:bold;font-size:16px; text-align: center;" href="{% url 'singleproduct' i.id %}">{{i.name}}</a>
+                                </h6><br>
+                                <h7> {{i.description}}</h7>
+                                <div class="item-stars">
+                                    <div class='star' title="0 out of 5 - based on 0 Reviews">
+                                        <span style='width:0'></span>
+                                    </div>
+                                    <span>(0)</span>
+                                </div>
+                            </div>
+                            <div class="price-template">
+                                <div class="item-new-price">
+                                    {{i.selling_price}}
+                                </div>
+                                <div class="item-old-price">
+                                    {{i.original_price}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tag hot">
+                            <span>NEW</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                   
+                </div>
+            </div>
+       
+            <!-- Carousel /- -->
+        </div>
+    </section>
+   
+</section>
+<section class="section-maker">
+    <div class="container">
+        <div class="sec-maker-header text-center">
+            <h3 class="sec-maker-h3">NEW ARRIVALS</h3>
+            <ul class="nav tab-nav-style-1-a justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#women-latest-products">Latest Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#women-best-selling-products">Best Selling</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#women-top-rating-products">Top Rating</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#women-featured-products">Featured Products</a>
+                </li>
+            </ul>
+        </div>
+        <div class="wrapper-content">
+            <div class="outer-area-tab">
+                <div class="tab-content">
+                    <div class="tab-pane active show fade" id="women-latest-products">
+                        <div class="slider-fouc">
+                            <div class="products-slider owl-carousel" data-item="4">
+                                <div class="item">
+                                    <div class="image-container">
+                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                            <img class="img-fluid" src="{% static 'images/product/product@3x.jpg' %}" alt="Product">
+                                        </a>
+                                        <div class="item-action-behaviors">
+                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
+                                            </a>
+                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
+                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="what-product-is">
+                                            <ul class="bread-crumb">
+                                                <li class="has-separator">
+                                                    <a href="shop-v1-root-category.html">Women's</a>
+                                                </li>
+                                                <li class="has-separator">
+                                                    <a href="shop-v2-sub-category.html">Tops</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-v3-sub-sub-category.html">Dresses</a>
+                                                </li>
+                                            </ul>
+                                            <h6 class="item-title">
+                                                <a href="single-product.html">White Solitude Dress with mid heel & Bag
+                                                </a>
+                                            </h6>
+                                            <div class="item-stars">
+                                                <div class='star' title="0 out of 5 - based on 0 Reviews">
+                                                    <span style='width:0'></span>
+                                                </div>
+                                                <span>(0)</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-template">
+                                            <div class="item-new-price">
+                                                $55.00
+                                            </div>
+                                            <div class="item-old-price">
+                                                $60.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tag new">
+                                        <span>NEW</span>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="image-container">
+                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                            <img class="img-fluid" src="{% static 'images/product/product@3x.jpg' %}" alt="Product">
+                                        </a>
+                                        <div class="item-action-behaviors">
+                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
+                                            </a>
+                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
+                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="what-product-is">
+                                            <ul class="bread-crumb">
+                                                <li class="has-separator">
+                                                    <a href="shop-v1-root-category.html">Women's</a>
+                                                </li>
+                                                <li class="has-separator">
+                                                    <a href="shop-v2-sub-category.html">Tops</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-v3-sub-sub-category.html">Dresses</a>
+                                                </li>
+                                            </ul>
+                                            <h6 class="item-title">
+                                                <a href="single-product.html">Black Rock Dress with High Jewelery Necklace
+                                                </a>
+                                            </h6>
+                                            <div class="item-stars">
+                                                <div class='star' title="0 out of 5 - based on 0 Reviews">
+                                                    <span style='width:0'></span>
+                                                </div>
+                                                <span>(0)</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-template">
+                                            <div class="item-new-price">
+                                                $55.00
+                                            </div>
+                                            <div class="item-old-price">
+                                                $60.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="image-container">
+                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                            <img class="img-fluid" src="{% static 'images/product/product@3x.jpg' %}" alt="Product">
+                                        </a>
+                                        <div class="item-action-behaviors">
+                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
+                                            </a>
+                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
+                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="what-product-is">
+                                            <ul class="bread-crumb">
+                                                <li class="has-separator">
+                                                    <a href="shop-v1-root-category.html">Women's</a>
+                                                </li>
+                                                <li class="has-separator">
+                                                    <a href="shop-v2-sub-category.html">Tops</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-v3-sub-sub-category.html">Dresses</a>
+                                                </li>
+                                            </ul>
+                                            <h6 class="item-title">
+                                                <a href="single-product.html">Haiti Full Dress with Boots & Jacket</a>
+                                            </h6>
+                                            <div class="item-stars">
+                                                <div class='star' title="0 out of 5 - based on 0 Reviews">
+                                                    <span style='width:0'></span>
+                                                </div>
+                                                <span>(0)</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-template">
+                                            <div class="item-new-price">
+                                                $55.00
+                                            </div>
+                                            <div class="item-old-price">
+                                                $60.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="image-container">
+                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                            <img class="img-fluid" src="{% static 'images/product/product@3x.jpg' %}" alt="Product">
+                                        </a>
+                                        <div class="item-action-behaviors">
+                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
+                                            </a>
+                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
+                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="what-product-is">
+                                            <ul class="bread-crumb">
+                                                <li class="has-separator">
+                                                    <a href="shop-v1-root-category.html">Women's</a>
+                                                </li>
+                                                <li class="has-separator">
+                                                    <a href="shop-v2-sub-category.html">Tops</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-v3-sub-sub-category.html">Dresses</a>
+                                                </li>
+                                            </ul>
+                                            <h6 class="item-title">
+                                                <a href="single-product.html">Black & White Wrap Dress with High Jewelery Necklace</a>
+                                            </h6>
+                                            <div class="item-stars">
+                                                <div class='star' title="0 out of 5 - based on 0 Reviews">
+                                                    <span style='width:0'></span>
+                                                </div>
+                                                <span>(0)</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-template">
+                                            <div class="item-new-price">
+                                                $55.00
+                                            </div>
+                                            <div class="item-old-price">
+                                                $60.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tag new">
+                                        <span>NEW</span>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="image-container">
+                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                            <img class="img-fluid" src="{% static 'images/product/product@3x.jpg' %}" alt="Product">
+                                        </a>
+                                        <div class="item-action-behaviors">
+                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
+                                            </a>
+                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
+                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="what-product-is">
+                                            <ul class="bread-crumb">
+                                                <li class="has-separator">
+                                                    <a href="shop-v1-root-category.html">Women's</a>
+                                                </li>
+                                                <li class="has-separator">
+                                                    <a href="shop-v2-sub-category.html">Tops</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-v3-sub-sub-category.html">Dresses</a>
+                                                </li>
+                                            </ul>
+                                            <h6 class="item-title">
+                                                <a href="single-product.html">Grey Nickel Special Occasion Dress</a>
+                                            </h6>
+                                            <div class="item-stars">
+                                                <div class='star' title="0 out of 5 - based on 0 Reviews">
+                                                    <span style='width:0'></span>
+                                                </div>
+                                                <span>(0)</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-template">
+                                            <div class="item-new-price">
+                                                $55.00
+                                            </div>
+                                            <div class="item-old-price">
+                                                $60.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tag sale">
+                                        <span>SALE</span>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="image-container">
+                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                            <img class="img-fluid" src="{% static 'images/product/product@3x.jpg' %}" alt="Product">
+                                        </a>
+                                        <div class="item-action-behaviors">
+                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
+                                            </a>
+                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
+                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="what-product-is">
+                                            <ul class="bread-crumb">
+                                                <li class="has-separator">
+                                                    <a href="shop-v1-root-category.html">Women's</a>
+                                                </li>
+                                                <li class="has-separator">
+                                                    <a href="shop-v2-sub-category.html">Tops</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-v3-sub-sub-category.html">Dresses</a>
+                                                </li>
+                                            </ul>
+                                            <h6 class="item-title">
+                                                <a href="single-product.html">Red Carmine Winter Special Occasion Dress
+                                                </a>
+                                            </h6>
+                                            <div class="item-stars">
+                                                <div class='star' title="0 out of 5 - based on 0 Reviews">
+                                                    <span style='width:0'></span>
+                                                </div>
+                                                <span>(0)</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-template">
+                                            <div class="item-new-price">
+                                                $55.00
+                                            </div>
+                                            <div class="item-old-price">
+                                                $60.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="image-container">
+                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                            <img class="img-fluid" src="{% static 'images/product/product@3x.jpg' %}" alt="Product">
+                                        </a>
+                                        <div class="item-action-behaviors">
+                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
+                                            </a>
+                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
+                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="what-product-is">
+                                            <ul class="bread-crumb">
+                                                <li class="has-separator">
+                                                    <a href="shop-v1-root-category.html">Women's</a>
+                                                </li>
+                                                <li class="has-separator">
+                                                    <a href="shop-v2-sub-category.html">Bottoms</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-v3-sub-sub-category.html">Shoes</a>
+                                                </li>
+                                            </ul>
+                                            <h6 class="item-title">
+                                                <a href="single-product.html">Wax Flower with Corn Silk Heel
+                                                </a>
+                                            </h6>
+                                            <div class="item-stars">
+                                                <div class='star' title="0 out of 5 - based on 0 Reviews">
+                                                    <span style='width:0'></span>
+                                                </div>
+                                                <span>(0)</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-template">
+                                            <div class="item-new-price">
+                                                $55.00
+                                            </div>
+                                            <div class="item-old-price">
+                                                $60.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="image-container">
+                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                            <img class="img-fluid" src="{% static 'images/product/product@3x.jpg' %}" alt="Product">
+                                        </a>
+                                        <div class="item-action-behaviors">
+                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
+                                            </a>
+                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
+                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="what-product-is">
+                                            <ul class="bread-crumb">
+                                                <li class="has-separator">
+                                                    <a href="shop-v1-root-category.html">Women's</a>
+                                                </li>
+                                                <li class="has-separator">
+                                                    <a href="shop-v2-sub-category.html">Intimates</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-v3-sub-sub-category.html">Bras</a>
+                                                </li>
+                                            </ul>
+                                            <h6 class="item-title">
+                                                <a href="single-product.html">Red Wild Bra
+                                                </a>
+                                            </h6>
+                                            <div class="item-stars">
+                                                <div class='star' title="0 out of 5 - based on 0 Reviews">
+                                                    <span style='width:0'></span>
+                                                </div>
+                                                <span>(0)</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-template">
+                                            <div class="item-new-price">
+                                                $55.00
+                                            </div>
+                                            <div class="item-old-price">
+                                                $60.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tag discount">
+                                        <span>-15%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="women-best-selling-products">
+                        <!-- Product Not Found -->
+                        <div class="product-not-found">
+                            <div class="not-found">
+                                <h2>SORRY!</h2>
+                                <h6>There is not any product in specific catalogue.</h6>
+                            </div>
+                        </div>
+                        <!-- Product Not Found /- -->
+                    </div>
+                    <div class="tab-pane fade" id="women-top-rating-products">
+                        <div class="slider-fouc">
+                            <div class="products-slider owl-carousel" data-item="4">
+                                <div class="item">
+                                    <div class="image-container">
+                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                            <img class="img-fluid" src="{% static 'images/product/product@3x.jpg' %}" alt="Product">
+                                        </a>
+                                        <div class="item-action-behaviors">
+                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
+                                            </a>
+                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
+                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="what-product-is">
+                                            <ul class="bread-crumb">
+                                                <li class="has-separator">
+                                                    <a href="shop-v1-root-category.html">Women's</a>
+                                                </li>
+                                                <li class="has-separator">
+                                                    <a href="shop-v2-sub-category.html">Tops</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-v3-sub-sub-category.html">Dresses</a>
+                                                </li>
+                                            </ul>
+                                            <h6 class="item-title">
+                                                <a href="single-product.html">Grey Nickel Special Occasion Dress</a>
+                                            </h6>
+                                            <div class="item-stars">
+                                                <div class='star' title="4.5 out of 5 - based on 23 Reviews">
+                                                    <span style='width:67px'></span>
+                                                </div>
+                                                <span>(23)</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-template">
+                                            <div class="item-new-price">
+                                                $55.00
+                                            </div>
+                                            <div class="item-old-price">
+                                                $60.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tag sale">
+                                        <span>SALE</span>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="image-container">
+                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                            <img class="img-fluid" src="{% static 'images/product/product@3x.jpg' %}" alt="Product">
+                                        </a>
+                                        <div class="item-action-behaviors">
+                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
+                                            </a>
+                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
+                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="what-product-is">
+                                            <ul class="bread-crumb">
+                                                <li class="has-separator">
+                                                    <a href="shop-v1-root-category.html">Women's</a>
+                                                </li>
+                                                <li class="has-separator">
+                                                    <a href="shop-v2-sub-category.html">Tops</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-v3-sub-sub-category.html">Dresses</a>
+                                                </li>
+                                            </ul>
+                                            <h6 class="item-title">
+                                                <a href="single-product.html">Red Carmine Winter Special Occasion Dress
+                                                </a>
+                                            </h6>
+                                            <div class="item-stars">
+                                                <div class='star' title="4.5 out of 5 - based on 23 Reviews">
+                                                    <span style='width:67px'></span>
+                                                </div>
+                                                <span>(23)</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-template">
+                                            <div class="item-new-price">
+                                                $55.00
+                                            </div>
+                                            <div class="item-old-price">
+                                                $60.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="image-container">
+                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                            <img class="img-fluid" src="{% static 'images/product/product@3x.jpg' %}" alt="Product">
+                                        </a>
+                                        <div class="item-action-behaviors">
+                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
+                                            </a>
+                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
+                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="what-product-is">
+                                            <ul class="bread-crumb">
+                                                <li class="has-separator">
+                                                    <a href="shop-v1-root-category.html">Women's</a>
+                                                </li>
+                                                <li class="has-separator">
+                                                    <a href="shop-v2-sub-category.html">Bottoms</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-v3-sub-sub-category.html">Shoes</a>
+                                                </li>
+                                            </ul>
+                                            <h6 class="item-title">
+                                                <a href="single-product.html">Wax Flower with Corn Silk Heel</a>
+                                            </h6>
+                                            <div class="item-stars">
+                                                <div class='star' title="4.5 out of 5 - based on 23 Reviews">
+                                                    <span style='width:67px'></span>
+                                                </div>
+                                                <span>(23)</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-template">
+                                            <div class="item-new-price">
+                                                $55.00
+                                            </div>
+                                            <div class="item-old-price">
+                                                $60.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="image-container">
+                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                            <img class="img-fluid" src="{% static 'images/product/product@3x.jpg' %}" alt="Product">
+                                        </a>
+                                        <div class="item-action-behaviors">
+                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
+                                            </a>
+                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
+                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="what-product-is">
+                                            <ul class="bread-crumb">
+                                                <li class="has-separator">
+                                                    <a href="shop-v1-root-category.html">Women's</a>
+                                                </li>
+                                                <li class="has-separator">
+                                                    <a href="shop-v2-sub-category.html">Intimates</a>
+                                                </li>
+                                                <li>
+                                                    <a href="shop-v3-sub-sub-category.html">Bras</a>
+                                                </li>
+                                            </ul>
+                                            <h6 class="item-title">
+                                                <a href="single-product.html">Red Wild Bra</a>
+                                            </h6>
+                                            <div class="item-stars">
+                                                <div class='star' title="4.5 out of 5 - based on 23 Reviews">
+                                                    <span style='width:67px'></span>
+                                                </div>
+                                                <span>(23)</span>
+                                            </div>
+                                        </div>
+                                        <div class="price-template">
+                                            <div class="item-new-price">
+                                                $55.00
+                                            </div>
+                                            <div class="item-old-price">
+                                                $60.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tag discount">
+                                        <span>-15%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="women-featured-products">
+                        <!-- Product Not Found -->
+                        <div class="product-not-found">
+                            <div class="not-found">
+                                <h2>SORRY!</h2>
+                                <h6>There is not any product in specific catalogue.</h6>
+                            </div>
+                        </div>
+                        <!-- Product Not Found /- -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="redirect-link-wrapper text-center u-s-p-t-25 u-s-p-b-80">
+            <a class="redirect-link" href="store-directory.html">
+                <span>View more on this category</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+    
+    <!-- Men-Clothing-Timing-Section /- -->
+    <!-- Banner-Image & View-more -->
+    <!-- <div class="banner-image-view-more">
+        <div class="container">
+            <div class="image-banner u-s-m-y-40">
+                <a href="shop-v1-root-category.html" class="mx-auto banner-hover effect-dark-opacity">
+                    <img class="img-fluid" src="{% static 'images/banners/ban-men.jpg' %}" alt="Banner Image">
+                </a>
+            </div>
+            
+
+    <!-- Continue-Link -->
+    <div class="continue-link-wrapper u-s-p-b-80">
+        <a class="continue-link" href="store-directory.html" title="View all products on site">
+            <i class="ion ion-ios-more"></i>
+        </a>
+    </div>
+    <!-- Continue-Link /- -->
+    <!-- Brand-Slider -->
+    <!-- <div class="brand-slider u-s-p-b-80">
+        <div class="container">
+            <div class="brand-slider-content owl-carousel" data-item="5">
+                <div class="brand-pic">
+                    <a href="#">
+                        <img src="{% static 'images/brand-logos/b1.png' %}" alt="Brand Logo 1">
+                    </a>
+                </div>
+                <div class="brand-pic">
+                    <a href="#">
+                        <img src="{% static 'images/brand-logos/b1.png' %}" alt="Brand Logo 2">
+                    </a>
+                </div>
+                <div class="brand-pic">
+                    <a href="#">
+                        <img src="{% static 'images/brand-logos/b1.png' %}" alt="Brand Logo 3">
+                    </a>
+                </div>
+                <div class="brand-pic">
+                    <a href="#">
+                        <img src="{% static 'images/brand-logos/b1.png' %}" alt="Brand Logo 5">
+                    </a>
+                </div>
+                <div class="brand-pic">
+                    <a href="#">
+                        <img src="{% static 'images/brand-logos/b1.png' %}" alt="Brand Logo 6">
+                    </a>
+                </div>
+                <div class="brand-pic">
+                    <a href="#">
+                        <img src="{% static 'images/brand-logos/b1.png' %}" alt="Brand Logo 7">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Brand-Slider /- -->
+    <!-- Site-Priorities -->
+    <!-- Site-Priorities /- -->
+    <!-- Footer -->
+{% endblock %}

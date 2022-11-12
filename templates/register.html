@@ -1,0 +1,342 @@
+{% extends 'base.html' %}
+{% block content %}
+
+ <div class="page-style-a">
+        <div class="container">
+            <div class="page-intro">
+                <h2>Account</h2>
+                <ul class="bread-crumb">
+                    <li class="has-separator">
+                        <i class="ion ion-md-home"></i>
+                        <a href="home.html">Home</a>
+                    </li>
+                    <li class="is-marked">
+                        <a href="{% url 'login' %}">Login Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Page Introduction Wrapper /- -->
+    <!-- Account-Page -->
+    <div class="page-account u-s-p-t-80">
+        <div class="container">
+            <div class="row">
+                <!-- Login -->
+                <!-- <div class="col-lg-6">
+                    <div class="login-wrapper">
+                        <h2 class="account-h2 u-s-m-b-20">Login</h2>
+                        <h6 class="account-h6 u-s-m-b-30">Welcome back! Sign in to your account.</h6>
+                        <form>
+                            <div class="u-s-m-b-30">
+                                <label for="user-name-email">Username or Email
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="user-name-email" class="text-field" placeholder="Username / Email">
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <label for="login-password">Password
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="login-password" class="text-field" placeholder="Password">
+                            </div>
+                            <div class="group-inline u-s-m-b-30">
+                                <div class="group-1">
+                                    <input type="checkbox" class="check-box" id="remember-me-token">
+                                    <label class="label-text" for="remember-me-token">Remember me</label>
+                                </div>
+                                <div class="group-2 text-right">
+                                    <div class="page-anchor">
+                                        <a href="lost-password.html">
+                                            <i class="fas fa-circle-o-notch u-s-m-r-9"></i>Lost your password?</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-b-45">
+                                <button class="button button-outline-secondary w-100">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div> -->
+                <!-- Login /- -->
+                <!-- Register -->
+                <script>
+                    function validate()
+                   {
+                       var f=document.getElementById("fname").value.trim();
+                       var l=document.getElementById("lname").value;
+                       var s=/^[a-zA-Z^\s]+$/;
+                       if(f=="")
+                {
+                    document.getElementById('fn').style.display = "block";
+
+                    document.getElementById('fn').innerHTML="**Please Enter  First Name";
+                    return false;
+                }
+                       if(f!="" && s.test(f)==false){
+   
+                           document.getElementById('fn').style.display = "block";
+                           document.getElementById('fn').innerHTML = "Invalid Fname";
+                           return false;
+                       }
+                       else{
+                           document.getElementById('fn').style.display = "none";
+                       }
+                       if(l=="")
+                {
+                    document.getElementById('ln').style.display = "block";
+
+                    document.getElementById('ln').innerHTML="**Please Enter  Last Name";
+                    return false;
+                }
+                       if(l!="" && s.test(l)==false){
+   
+                           document.getElementById('ln').style.display = "block";
+                           document.getElementById('ln').innerHTML = "Invalid Lname";
+                           return false;
+                       }
+                       else{
+                           document.getElementById('ln').style.display = "none";
+                       }
+   
+                       var a=document.getElementById("email").value;
+                       var st=/^[\w\+\'\.-]+@[\w\'\.-]+\.[a-zA-Z]{2,}$/;
+                       if(a=="")
+                {
+                    document.getElementById('el').style.display = "block";
+
+                    document.getElementById('el').innerHTML="**Please Enter  Email";
+                    return false;
+                }
+                       if(a!="" && st.test(a)==false){
+   
+                           document.getElementById('el').style.display = "block";
+                           document.getElementById('el').innerHTML = "Invalid Email id";
+                           return false;
+                       }
+                       else{
+                           document.getElementById('el').style.display = "none";
+                       }
+   
+                       var ph = document.getElementById("tel").value;
+                       var expr = /^[6-9]\d{9}$/;
+                       if(ph=="")
+                {
+                    document.getElementById('pe').style.display = "block";
+
+                    document.getElementById('pe').innerHTML="**Please Enter  phone";
+                    return false;
+                }
+                       if(ph!="" && expr.test(ph)==false){
+                           document.getElementById('pe').style.display = "block";
+                           document.getElementById('pe').innerHTML = "Invalid Phone number";
+                           return false;
+                                   }
+                                   else{
+                           document.getElementById('pe').style.display = "none";
+                       }
+                        var d=document.getElementById('password').value;
+   
+                        var e=document.getElementById('cpassword').value;
+                        if(d=="")
+                {
+                    document.getElementById('pss').style.display = "block";
+
+                    document.getElementById('pss').innerHTML="**Please Enter  password";
+                    return false;
+                }
+                   else{
+                           document.getElementById('pss').style.display = "none";
+                       }
+                       if(e=="")
+                {
+                    document.getElementById('cpss').style.display = "block";
+
+                    document.getElementById('cpss').innerHTML="**Please Enter Conform password";
+                    return false;
+                }
+   
+                   if(d!=e)
+                   {
+                       document.getElementById('cpss').style.display = "block";
+   
+                       document.getElementById('cpss').innerHTML="**Incorrect Password";
+                       return false;
+                   }
+                           else
+                             {
+                                 document.getElementById('cpss').style.display = "none";
+   
+                       return true;
+                   }
+   
+   
+                   }
+                   function onclear()
+                   {
+                    document.getElementById('pss').style.display = "none";
+                   }
+                   </script>
+                <div class="col-lg-6">
+                    <div class="reg-wrapper">
+                        <h2 class="account-h2 u-s-m-b-20">Register</h2>
+                        <h6 class="account-h6 u-s-m-b-30">Registering for this site allows you to access your order status and history.</h6>
+                        <form action="{% url 'register' %}" method="post" onsubmit="return validate();">
+                            {% csrf_token %}
+                            <div class="u-s-m-b-30">
+                                <label for="First Name">First Name
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="fname" class="text-field" name="fname" placeholder="First Name" onblur="return validate()" onKeyUp="return validate()" >
+                                <span id="fn" style="color: red;"></span>
+                            </div>
+                             <div class="u-s-m-b-30">
+                                <label for="Last Name">Last Name
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="lname" class="text-field" name="lname" placeholder="Last Name" onblur="return validate()" onKeyUp="return validate()">
+                                <span id="ln" style="color: red;"></span>
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <label for="emails">Email
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="email" class="text-field"  name="email" placeholder="Email" onblur="return validate()" onKeyUp="return validate()">
+                                <span id="el" style="color: red;"></span>
+                            </div>
+                              <div class="u-s-m-b-30">
+                                <label for="Phone">Phone
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="tel" class="text-field"  name="phone_number" placeholder="Phone" minlength="10" maxlength="10" onblur="return validate()" onKeyUp="return validate()">
+                                <span id="pe" style="color: red;"></span>
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <label for="pass">Password
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="password" id="password" class="text-field" name="password" placeholder="Password" onclick="return onclear()">
+                                <span id="pss" style="color: red;"></span>
+
+                                                <style>
+                                                 /* The message box is shown when the user clicks on the password field */
+                                                    #message {
+                                                    display:none;
+                                                    background:#fff;
+                                                    color: #000;
+                                                    position: relative;
+                                                    padding: 20px;
+                                                    margin-top: 10px;
+                                                    }
+                                                                        #message p {
+                                                    padding: 1px 35px;
+                                                    font-size: 14px;
+                                                    }
+                                                    /* Add a green text color and a checkmark when the requirements are right */
+                                                    .valid {
+                                                    color: green;
+                                                    }
+
+                                                    .valid:before {
+                                                    position: relative;
+                                                    left: -25px;
+                                                    content: "✔";
+                                                    }
+
+                                                    /* Add a red text color and an "x" when the requirements are wrong */
+                                                    .invalid {
+                                                    color: red;
+                                                    }
+
+                                                    .invalid:before {
+                                                    position: relative;
+                                                    left: -25px;
+                                                    content: "✖";
+                                                    }
+                                                    </style>
+                                                <div id="message">
+<!--                                                    <h4 style="color:rgb(249, 164, 61) ;">Password must contain the following:</h4>-->
+                                                        <p id="letter" class="invalid">A lowercase letter</p>
+                                                        <p id="capital" class="invalid">A capital (uppercase) letter</p>
+                                                        <p id="number" class="invalid">A number</p>
+                                                        <p id="length" class="invalid">Minimum 8 characters</b></p>
+                                                     </div>
+                                                <script>
+                                        var myInput = document.getElementById("password");
+                                        var letter = document.getElementById("letter");
+                                        var capital = document.getElementById("capital");
+                                        var number = document.getElementById("number");
+                                        var length = document.getElementById("length");
+                                        myInput.onfocus = function() {
+                                        document.getElementById("message").style.display = "block";
+                                        }
+                                        myInput.onblur = function() {
+                                        document.getElementById("message").style.display = "none";
+                                        }
+                                        // When the user starts to type something inside the password field
+                                        myInput.onkeyup = function() {
+                                        // Validate lowercase letters
+                                        var lowerCaseLetters = /[a-z]/g;
+                                        if(myInput.value.match(lowerCaseLetters)) {
+                                            letter.classList.remove("invalid");
+                                            letter.classList.add("valid");
+                                        } else {
+                                            letter.classList.remove("valid");
+                                            letter.classList.add("invalid");
+                                        }
+
+                                        // Validate capital letters
+                                        var upperCaseLetters = /[A-Z]/g;
+                                        if(myInput.value.match(upperCaseLetters)) {
+                                            capital.classList.remove("invalid");
+                                            capital.classList.add("valid");
+                                        } else {
+                                            capital.classList.remove("valid");
+                                            capital.classList.add("invalid");
+                                        }
+
+                                        // Validate numbers
+                                        var numbers = /[0-9]/g;
+                                        if(myInput.value.match(numbers)) {
+                                            number.classList.remove("invalid");
+                                            number.classList.add("valid");
+                                        } else {
+                                            number.classList.remove("valid");
+                                            number.classList.add("invalid");
+                                        }
+
+                                        // Validate length
+                                        if(myInput.value.length >= 8) {
+                                            length.classList.remove("invalid");
+                                            length.classList.add("valid");
+                                        } else {
+                                            length.classList.remove("valid");
+                                            length.classList.add("invalid");
+                                        }
+                                        }
+                                    </script>
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <label for="passw">Conform Password
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="password" id="cpassword" class="text-field" name="cpassword" placeholder="Conform Password" onblur="return validate()" onKeyUp="return validate()">
+                                <span id="cpss" style="color: red;"></span>
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <input type="checkbox" class="check-box" id="accept">
+                                <label class="label-text no-color" for="accept">I’ve read and accept the
+                                    <a href="terms-and-conditions.html" class="u-c-brand">terms & conditions</a>
+                                </label>
+                            </div>
+                            <div class="u-s-m-b-45">
+                                <button class="button button-primary w-100" type="submit"> Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Register /- -->
+            </div>
+        </div>
+    </div>
+            {% endblock %}
