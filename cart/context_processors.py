@@ -1,6 +1,5 @@
 from cart.models import Cart
 
-
 def counter(request):
     cart_count = 0
     if request.user.is_authenticated:
@@ -10,3 +9,5 @@ def counter(request):
     for cart in carts:
         cart_count += cart.product_qty     
     return dict(cart_count=cart_count)
+
+

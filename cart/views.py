@@ -72,7 +72,6 @@ def de_cart(request,id):
 def view_wishlist(request):  
     user = request.user
     wlist=Whishlist.objects.filter(user_id=user.id)
-    print("zsxdcfvgbhnjm",wlist)
     return render(request,"wishlist.html",{'wlist':wlist})
 
 
