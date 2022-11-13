@@ -8,11 +8,9 @@
                 <ul class="bread-crumb">
                     <li class="has-separator">
                         <i class="ion ion-md-home"></i>
-                        <a href="home.html">Home</a>
+                        <a href="{% url 'home' %}">Home</a>
                     </li>
-                    <li class="is-marked">
-                        <a href="#"> </a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -63,9 +61,9 @@
                 <script>
                     function validate()
                    {
-                       var f=document.getElementById("fname").value;
+                       var f=document.getElementById("fname").value.trim();
                        var l=document.getElementById("lname").value;
-                       var s=/^[a-zA-Z]+$/;
+                       var s=/^[a-zA-Z^\s]+$/;
                        if(f=="")
                 {
                     document.getElementById('fn').style.display = "block";
@@ -100,7 +98,7 @@
                        }
    
                        var a=document.getElementById("email").value;
-                       var st=/^[\w\+\'\.-]+@[\w\'\.-]+\.[a-zA-Z]{3,}$/;
+                       var st=/^[\w\+\'\.-]+@[\w\'\.-]+\.[a-zA-Z]{2,}$/;
                        if(a=="")
                 {
                     document.getElementById('el').style.display = "block";
@@ -178,40 +176,46 @@
                    }
                    </script>
                 <div class="col-lg-6">
-                   
                     <div class="reg-wrapper">
-                        <h2 class="account-h2 u-s-m-b-20">PROFILE</h2>
-                        <form>
-                            
+                        
+                        <h2 class="account-h2 u-s-m-b-20">Profile</h2>
+                        {% for i in user %}
+                        {% if i.id == id %}
+                        <!-- <h6 class="account-h6 u-s-m-b-30">Registering for this site allows you to access your order status and history.</h6> -->
+                        <form action="{% url 'profile_update' %}" method="post" onsubmit="return validate();">
+                            {% csrf_token %}
                             <div class="u-s-m-b-30">
                                 <label for="First Name">First Name
                                     <span class="astk">*</span>
                                 </label>
-                                <input type="text" id="fname" class="text-field" name="fname" placeholder="First Name" value="{{i.fname}}" onblur="return validate()" onKeyUp="return validate()" >
+                                <input type="text" id="fname" class="text-field" name="fname" value="{{i.fname}}" onblur="return validate()" onKeyUp="return validate()" >
                                 <span id="fn" style="color: red;"></span>
                             </div>
                              <div class="u-s-m-b-30">
                                 <label for="Last Name">Last Name
                                     <span class="astk">*</span>
                                 </label>
-                                <input type="text" id="lname" class="text-field" name="lname" placeholder="Last Name" onblur="return validate()" onKeyUp="return validate()">
+                                <input type="text" id="lname" class="text-field" name="lname" value="{{i.lname}}" onblur="return validate()" onKeyUp="return validate()">
                                 <span id="ln" style="color: red;"></span>
                             </div>
-                            <!-- <div class="u-s-m-b-30">
+                            <div class="u-s-m-b-30">
                                 <label for="emails">Email
                                     <span class="astk">*</span>
                                 </label>
-                                <input type="text" id="email" class="text-field"  name="email" placeholder="Email" onblur="return validate()" onKeyUp="return validate()">
+                                <input type="text" id="email" class="text-field"  name="email" value="{{i.email}}" onblur="return validate()" onKeyUp="return validate()">
                                 <span id="el" style="color: red;"></span>
-                            </div> -->
+                            </div>
                               <div class="u-s-m-b-30">
                                 <label for="Phone">Phone
                                     <span class="astk">*</span>
                                 </label>
-                                <input type="text" id="tel" class="text-field"  name="phone_number" placeholder="Phone" minlength="10" maxlength="10" onblur="return validate()" onKeyUp="return validate()">
+                                <input type="text" id="tel" class="text-field"  name="phone_number" value="{{i.phone_number}}" minlength="10" maxlength="10" onblur="return validate()" onKeyUp="return validate()">
                                 <span id="pe" style="color: red;"></span>
                             </div>
+                            {% endif %}
+                            {% endfor %}
                             
+                             
                             <div class="u-s-m-b-30">
                                 <input type="checkbox" class="check-box" id="accept">
                                 <label class="label-text no-color" for="accept">I’ve read and accept the
@@ -219,12 +223,12 @@
                                 </label>
                             </div>
                             <div class="u-s-m-b-45">
-                                <button class="button button-primary w-100" type="submit"> Edit Profile</button>
+                                <button class="button button-primary w-100" type="submit"> Update Profile</button>
                             </div>
-                           
                         </form>
+                         
                     </div>
-                 
+                   
                 </div>
                 <!-- Register /- -->
             </div>

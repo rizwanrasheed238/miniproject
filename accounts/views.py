@@ -162,10 +162,6 @@ def activate(request, uidb64, token):
         return redirect('register')
 
 
-def profile(request):
-    
-    user=Account.objects.all()
-    return render(request,"profile.html",{'user':user})
 
 def singleproduct(request,id):
     product=Product.objects.filter(id=id)
@@ -196,3 +192,33 @@ def shop(request):
     product=Product.objects.all()
 
     return render(request,"shop.html",{'category':category,'subcategory':subcategory,'product':product})
+
+
+def profile_update(request):
+    user_id = request.user.id
+    
+    user=Account.objects.get(id=user_id)
+    if request.method == "POST":
+         fname  = request.POST.get('fname')
+         lname  = request.POST.get('lname')
+         email = request.POST.get('email')
+         phone_number = request.POST.get('phone_number')
+       
+         user.fname =  fname
+         user.lname =  lname
+         user.phone_number = phone_number
+         user.email = email
+
+        #  if password != None and password != "":
+        #    user.set_password(password)
+         user.save()
+         messages.success(request,'Profile Are Successfully Updated. ')
+         return redirect('profile')         
+
+def profile(request):
+    id = request.user.id
+    user=Account.objects.get(id=id)
+    user=Account.objects.all()
+    return render(request,"profile.html",{'user':user,'id':id})  
+
+     
