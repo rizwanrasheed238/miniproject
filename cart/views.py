@@ -2,7 +2,7 @@ from itertools import product
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
-from cart.models import Cart
+from cart.models import Cart, Whishlist
 from category.models import Catagory, Product, Subcategory
 
 
@@ -67,7 +67,30 @@ def de_cart(request,id):
 
 
 
-    #wishlist
-    
-def wishlist(request):
-    return render(request, "wishlist.html")
+#wishlist
+@login_required(login_url='login')
+def view_wishlist(request):  
+    user = request.user
+    wlist=Whishlist.objects.filter(user_id=user.id)
+    print("zsxdcfvgbhnjm",wlist)
+    return render(request,"wishlist.html",{'wlist':wlist})
+
+
+@login_required(login_url='login')
+def add_wishlist(request,id):
+    item=Product.objects.get(id=id)
+    user = request.user     
+    if Whishlist.objects.filter( user_id =user.id,product_id=item.id).exists():
+        return redirect('view_wishlist')        
+    else:
+        new_wishlist=Whishlist(user_id=user.id,product_id=item.id)
+        new_wishlist.save()
+        return redirect('view_wishlist')
+    messages.success(request, 'Sign in..!!')
+    return redirect(login)    
+
+
+@login_required(login_url='login')
+def de_wishlist(request,id):
+    Whishlist.objects.get(id=id).delete()
+    return redirect('view_wishlist')    

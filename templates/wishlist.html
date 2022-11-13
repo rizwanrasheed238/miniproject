@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
- <div class="page-style-a">
+ <!-- <div class="page-style-a">
         <div class="container">
             <div class="page-intro">
                 <h2>Wishlist</h2>
@@ -11,12 +11,12 @@
                         <a href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="is-marked">
-                        <a href="{% url 'wishlist' %}">Wishlist</a>
+                        <a href="{% url 'view_wishlist' %}">Wishlist</a>
                     </li>
                 </ul>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Page Introduction Wrapper /- -->
     <!-- Wishlist-Page -->
     <div class="page-wishlist u-s-p-t-80">
@@ -24,44 +24,62 @@
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Products-List-Wrapper -->
+                    
+                    {% if not wlist %}
+        
+                    <div style="height:300px;text-align: center;">
+                          <h2 style="font-family: sans-serif;color: rgb(246, 86, 12);">Your WishList is Empty !!!!</h2><br>
+                          <div class="button-area">
+                            <a href="{% url 'home' %}" style="font-weight:bold;color:rgb(240, 16, 16);">Continue Shopping</a>
+                            </div>
+                    </div>
+                        </div>
+                          {% else %}
                     <div class="table-wrapper u-s-m-b-60">
                         <table>
                             <thead>
                                 <tr>
                                     <th>Product</th>
-                                    <th>Unit Price</th>
-                                    <th>Stock Status</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for i in wlist %}
                                 <tr>
                                     <td>
                                         <div class="cart-anchor-image">
                                             <a href="single-product.html">
-                                                <img src="{% static 'images/product/product@1x.jpg' %}" alt="Product">
-                                                <h6>Casual Hoodie Full Cotton</h6>
+                                                <img src="{{i.product.product_image.url}}" alt="Product">
+                                                <h6></h6>
                                             </a>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="cart-price">
-                                            $55.00
+                                            {{i.product.name}}
                                         </div>
                                     </td>
                                     <td>
                                         <div class="cart-stock">
-                                            In Stock
+                                            {{i.product.selling_price}}
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="action-wrapper">
-                                            <button class="button button-outline-secondary">Add to Cart</button>
-                                            <button class="button button-outline-secondary fas fa-trash"></button>
+                                        <div class="action-wrapper" style="background-color:rgb(241, 15, 34);height: 25px;width:95px;border-radius:3px;">
+                                            <a style="color:#fff;margin-left:5px;" href="{% url 'addcart' i.product.id %}">Add to Cart</a>
+                                        </div>
+                                    </td>
+
+                                    <td style="margin-left: -30px;">
+                                        <div class="action-wrapper" style="background-color:rgb(241, 15, 34);height: 25px;width:70px;border-radius:3px;">
+                                            <a href="{% url 'de_wishlist' i.id %}" style="color:#fff;margin-left:5px;">Remove</a>
                                         </div>
                                     </td>
                                 </tr>
-                                
+                                {% endfor %}
+                              
                                 <!-- <tr>
                                     <td>
                                         <div class="cart-anchor-image">
@@ -90,8 +108,10 @@
                                 </tr> -->
                             </tbody>
                         </table>
+                        {% endif %}
                     </div>
                     <!-- Products-List-Wrapper /- -->
+                    
                 </div>
             </div>
         </div>
