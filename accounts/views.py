@@ -221,4 +221,12 @@ def profile(request):
     user=Account.objects.all()
     return render(request,"profile.html",{'user':user,'id':id})  
 
+
+def checkout(request):
+    category=Catagory.objects.all()
+    subcategory=Subcategory.objects.all()
+    product=Product.objects.all()
+    return render(request,"checkout.html",{'category':category,'subcategory':subcategory,'product':product}) 
+    
+
      
